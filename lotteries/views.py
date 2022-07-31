@@ -20,6 +20,9 @@ def index(request):
     today = date.today()
     minus_7 = today - timedelta(days=7)
     minus_30 = today - timedelta(days=30)
+    period_end_date = Period_End_Dates.objects.latest('period_end_date')
+    print(period_end_date)
+    period_end_date = str(period_end_date)
 
     wins_7 = Player.objects.values('player_name').filter(win__scan_date__gte=minus_7).annotate(
         Count('win__player')).order_by('-win__player__count')
@@ -30,7 +33,10 @@ def index(request):
     wins_all = Player.objects.values('player_name').annotate(Count('win__player')).order_by(
         '-win__player__count')
 
-    context = {'wins_7': wins_7, 'wins_30': wins_30, 'wins_all': wins_all}
+    wins_period = Player.objects.values('player_name').filter(win__scan_date__gte=period_end_date).annotate(
+        Count('win__player')).order_by('-win__player__count')
+
+    context = {'wins_7': wins_7, 'wins_30': wins_30, 'wins_period': wins_period, 'wins_all': wins_all}
     return render(request, 'lotteries/index.html', context)
 
 
