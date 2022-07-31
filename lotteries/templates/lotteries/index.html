@@ -1,6 +1,13 @@
 {% extends "lotteries/base.html" %}
 
 {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
 <h1>Lottery! Woo!</h1>
 
 <h2>Last 7 Days</h2>
@@ -22,5 +29,8 @@
 {% for win in wins_all %}
 <p>{{ win.player_name }} - {{ win.win__player__count }}</p>
 {% endfor %}
+
+</body>
+</html>
 
 {% endblock content %}
