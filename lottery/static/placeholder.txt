@@ -1,0 +1,2 @@
+This file ensures that the lottery/static/ folder will be added to the project.
+Django will collect static files and place them in lottery/static/

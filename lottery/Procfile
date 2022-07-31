@@ -1,0 +1,1 @@
+web gunicorn lottery.wsgi:application --log-file -
