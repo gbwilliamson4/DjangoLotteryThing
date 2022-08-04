@@ -68,7 +68,6 @@ def checkscan(request):
 
 
 def new_player_guess(request):
-    print("New Player Guess page is loaded.")
     # This data will be displayed on a table in new_player_guesses.html
     today = datetime.today()
     player_guesses = Player_Guesses.objects.exclude(scan_date__year=today.year, scan_date__month=today.month,
@@ -107,6 +106,7 @@ def new_player_guess(request):
                 messages.success(request, 'Guess successfully submitted!')
                 return redirect('lotteries:new_player_guess')
         except IntegrityError:
+            print(IntegrityError)
             messages.warning(request, 'Only one guess allowed per player per day.')
 
     context = {'form': form, 'player_guesses': player_guesses, 'today_player_guesses': today_player_guesses}
