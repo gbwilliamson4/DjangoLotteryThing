@@ -166,3 +166,9 @@ class Player_Compare:
         # This will be used in the normal gameplay for finding the winner
         self.total_off = 0
         # PlayerID of 0 will be passed through for the winning numbers
+
+
+def win_data(request):
+    wins = Win.objects.order_by('-scan_date').all()[:30]
+    context = {'wins': wins}
+    return render(request, 'lotteries/win_data.html', context)
