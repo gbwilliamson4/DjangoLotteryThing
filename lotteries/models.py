@@ -57,7 +57,7 @@ class Player_Guesses(models.Model):
 
     class Meta:
         constraints = [
-            UniqueConstraint(fields=['player', 'scan_date'], name='unique_player_date_guess')
+            UniqueConstraint(fields=['player_id', 'scan_date'], name='unique_player_date_guess')
         ]
 
     def __str__(self):
