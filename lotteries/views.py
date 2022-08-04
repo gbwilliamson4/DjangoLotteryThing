@@ -68,6 +68,7 @@ def checkscan(request):
 
 
 def new_player_guess(request):
+    print("New Player Guess page is loaded.")
     # This data will be displayed on a table in new_player_guesses.html
     today = datetime.today()
     player_guesses = Player_Guesses.objects.exclude(scan_date__year=today.year, scan_date__month=today.month,
