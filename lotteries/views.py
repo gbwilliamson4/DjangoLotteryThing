@@ -75,7 +75,7 @@ def new_player_guess(request):
 
     # Display this data above the other table. That way the most current is always on top. Use a separate html table.
     today_player_guesses = Player_Guesses.objects.filter(scan_date__year=today.year, scan_date__month=today.month,
-                                                         scan_date__day=today.day)
+                                                         scan_date__day=today.day).order_by('player')
 
     # Count how many players are playing today to determine when we reveal all daily guesses.
     participating_players_count = Participating_Players.objects.annotate(
@@ -139,6 +139,8 @@ def calculate_winner():
         objPlayer.scan_date = player.scan_date
 
         player_list.append(objPlayer)
+
+    player_list.sort(key=attrgetter('total_off'))
     return player_list
 
 
