@@ -1,1 +1,1 @@
-web gunicorn lottery.wsgi:application --log-file -
+web: python manage.py migrate && gunicorn lottery.wsgi
