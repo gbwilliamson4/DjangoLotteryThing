@@ -21,7 +21,7 @@ def index(request):
     minus_7 = today - timedelta(days=7)
     minus_30 = today - timedelta(days=30)
     period_end_date = Period_End_Dates.objects.latest('period_end_date')
-    print(period_end_date)
+    # print(period_end_date)
     period_end_date = str(period_end_date)
 
     wins_7 = Player.objects.values('player_name').filter(win__scan_date__gte=minus_7).annotate(

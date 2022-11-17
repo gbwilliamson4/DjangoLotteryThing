@@ -20,6 +20,10 @@ class CheckscanNumbers(forms.ModelForm):
 
 
 class PlayerGuessForm(forms.ModelForm):
+    # def __init__(self):
+    #     super(PlayerGuessForm, self).__init__(self)
+    #     self.fields['player'].queryset = Player.objects.filter(active=True)
+
     class Meta:
         model = Player_Guesses
         fields = ['player', 'nonerisa', 'erisa', 'cafeteria', 'operating']
